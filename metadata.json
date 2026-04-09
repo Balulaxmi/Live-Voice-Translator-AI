@@ -1,0 +1,5 @@
+{
+  "name": "Live Voice Translator AI",
+  "description": "Real-time Telugu-English voice translation with auto-detection.",
+  "requestFramePermissions": ["microphone"]
+}

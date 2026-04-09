@@ -1,0 +1,40 @@
+{
+  "entities": {
+    "Conversation": {
+      "title": "Conversation",
+      "description": "A conversation between two users.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "participants": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["id", "createdAt", "participants"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "A message in a conversation.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "conversationId": { "type": "string" },
+        "senderId": { "type": "string" },
+        "text": { "type": "string" },
+        "translatedText": { "type": "string" },
+        "language": { "type": "string", "enum": ["en", "te"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "conversationId", "senderId", "text", "language", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/conversations/{conversationId}": {
+      "schema": "Conversation",
+      "description": "Conversations collection"
+    },
+    "/conversations/{conversationId}/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Messages collection"
+    }
+  }
+}
